@@ -1,0 +1,4 @@
+{
+    // Increase scrollback for the integrated terminal
+    "terminal.integrated.scrollback": 10000
+}

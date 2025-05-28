@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Odin GDExtension (process)",
+            "type": "process",
+            "command": "odin",
+            "args": [
+                "build",
+                "src",
+                "-collection:godot=godot",
+                "-build-mode:shared",
+                "-o:speed",
+                "-out:bin/odin_engine.dll",
+                "-debug",
+                "-warnings-as-errors"
+            ]
+        },
+        {
+            "label": "Build Odin GDExtension (shell)",
+            "type": "shell",
+            "command": "odin build src -collection:godot=godot -build-mode:shared -o:speed -out:bin/odin_engine.dll -debug -warnings-as-errors",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "RAD Debug Godot Editor",
+            "type": "process",
+            "command": "C:\\Users\\caleb\\Downloads\\raddbg\\raddbg.exe",
+            "args": [
+                "--auto_run",
+                "-q",
+                "C:\\Users\\caleb\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.4.1-stable_win64.exe",
+                "--path",
+                "${workspaceFolder}"
+            ],
+            "dependsOn": [
+                "Build Odin GDExtension (process)"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
